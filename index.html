@@ -57,14 +57,14 @@
   <!-- Global Sticky Navigation Bar (Nintendo Red Stripe) -->
   <header class="fixed top-0 left-0 right-0 z-40 nintendo-nav transition-all duration-300 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <!-- Nintendo Capsule Logo -->
-      <a href="#" class="flex items-center gap-2 group">
-        <div class="nintendo-badge text-base tracking-normal group-hover:scale-105 transition-transform">
+      <!-- Nintendo Logo & Avatar Badge -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="relative w-8 h-8 rounded-full overflow-hidden border-2 border-[#E60012] shadow-sm shrink-0">
+          <img src="https://avatars.githubusercontent.com/u/232980289?v=4" alt="Suppaume Avatar" class="w-full h-full object-cover">
+        </div>
+        <div class="nintendo-badge text-sm sm:text-base tracking-normal group-hover:scale-105 transition-transform">
           Suppaume
         </div>
-        <span class="text-xs font-black text-slate-400 group-hover:text-[#E60012] transition-colors font-mono">
-          .dev
-        </span>
       </a>
 
       <!-- Desktop Navigation Links -->
@@ -76,7 +76,7 @@
       </nav>
 
       <!-- Right Action Items -->
-      <div class="flex items-center gap-2 sm:gap-2.5">
+      <div class="flex items-center gap-2">
         <!-- Live Status Pill (Desktop) -->
         <div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/90 border border-emerald-300 text-emerald-800 text-xs font-black shadow-sm">
           <span class="relative flex h-2 w-2">
@@ -87,25 +87,25 @@
         </div>
 
         <!-- Nintendo Switch UI Sound Toggle -->
-        <button id="sound-toggle-btn" class="touch-target px-2.5 py-1.5 rounded-full bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-700 transition-all flex items-center justify-center shadow-sm" title="Sound Effects: ON">
+        <button id="sound-toggle-btn" class="touch-target w-9 h-9 rounded-full bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-700 transition-all flex items-center justify-center shadow-sm shrink-0" title="Sound Effects: ON">
           <i data-lucide="volume-2" class="w-4 h-4 text-[#E60012]"></i>
         </button>
 
         <!-- Language Switcher Toggle -->
-        <button id="lang-toggle-btn" class="touch-target px-3 py-1.5 rounded-full bg-white hover:bg-slate-50 border-2 border-slate-200 text-xs font-black text-slate-800 transition-all flex items-center justify-center gap-1.5 shadow-sm" title="Switch Language">
+        <button id="lang-toggle-btn" class="touch-target px-2.5 py-1 rounded-full bg-white hover:bg-slate-50 border-2 border-slate-200 text-xs font-black text-slate-800 transition-all flex items-center justify-center gap-1 shadow-sm shrink-0" title="Switch Language">
           <i data-lucide="globe" class="w-3.5 h-3.5 text-[#00C3E3]"></i>
-          <span class="lang-label">EN</span>
+          <span class="lang-label font-mono">EN</span>
         </button>
 
         <!-- GitHub Icon Link -->
-        <a href="https://github.com/Suppaume1103" target="_blank" rel="noopener noreferrer" class="touch-target p-2 rounded-full bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-800 transition-all flex items-center justify-center shadow-sm" title="GitHub Profile">
+        <a href="https://github.com/Suppaume1103" target="_blank" rel="noopener noreferrer" class="touch-target w-9 h-9 rounded-full bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-800 transition-all flex items-center justify-center shadow-sm shrink-0" title="GitHub Profile">
           <i data-lucide="github" class="w-4 h-4"></i>
         </a>
 
         <!-- Mobile Menu Toggle Button (Hamburger) -->
-        <button id="mobile-menu-btn" class="md:hidden touch-target p-2 rounded-full bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-800 transition-all flex items-center justify-center shadow-sm" aria-label="Toggle navigation menu">
-          <i data-lucide="menu" id="menu-icon-open" class="w-5 h-5"></i>
-          <i data-lucide="x" id="menu-icon-close" class="w-5 h-5 hidden"></i>
+        <button id="mobile-menu-btn" class="md:hidden touch-target w-9 h-9 rounded-full bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-800 transition-all flex items-center justify-center shadow-sm shrink-0" aria-label="Toggle navigation menu">
+          <i data-lucide="menu" id="menu-icon-open" class="w-4 h-4"></i>
+          <i data-lucide="x" id="menu-icon-close" class="w-4 h-4 hidden"></i>
         </button>
       </div>
     </div>
@@ -147,57 +147,79 @@
   <main class="relative z-10 pt-16">
 
     <!-- =====================================================================
-         Hero Section (Nintendo Playful 3D World & Direct Style)
+         Hero Section (Clean 2-Column Split: Text on Left, 3D on Right)
          ===================================================================== -->
-    <section class="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 py-14 sm:py-20">
-      <!-- 3D Canvas Background Container -->
-      <div id="hero-canvas-container" class="absolute inset-0"></div>
+    <section class="relative min-h-[80vh] flex items-center px-4 sm:px-6 py-12 lg:py-20 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
+        
+        <!-- Left Column: Copy & Actions (No overlapping with 3D!) -->
+        <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left z-10">
+          <!-- Eyebrow Badge -->
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border-2 border-slate-200 mb-6 shadow-sm">
+            <i data-lucide="sparkles" class="w-4 h-4 text-[#FFB300] shrink-0 fill-current"></i>
+            <span class="text-xs font-black tracking-wider text-slate-800 uppercase" data-i18n="heroTag">PLAYFUL × INTELLIGENCE × ENGINEERING</span>
+          </div>
 
-      <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
-        <!-- Eyebrow Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border-2 border-slate-200 mb-6 sm:mb-8 shadow-sm">
-          <i data-lucide="sparkles" class="w-4 h-4 text-[#FFB300] shrink-0 fill-current"></i>
-          <span class="text-xs font-black tracking-wider text-slate-800 uppercase" data-i18n="heroTag">PLAYFUL × INTELLIGENCE × ENGINEERING</span>
+          <!-- Hero Headline (No strange rotation!) -->
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 mb-5 leading-[1.2]">
+            <span data-i18n="heroTitlePrefix">あそび心を、</span><br>
+            <span class="text-[#E60012]" data-i18n="heroTitleHighlight">テクノロジーでカタチに。</span>
+          </h1>
+
+          <!-- Hero Subtitle -->
+          <p class="text-sm sm:text-base lg:text-lg text-slate-600 max-w-xl mb-8 leading-relaxed font-bold" data-i18n="heroDesc">
+            知能情報処理（NLP・TF-IDF・LLM）・リアルタイムWebSocket・WebGL/3D物理演算まで。動かして楽しい、触って心地よいシステムを創るエンジニアリング。
+          </p>
+
+          <!-- CTA Action Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10 w-full sm:w-auto">
+            <a href="#projects" class="w-full sm:w-auto btn-nintendo-red px-8 py-4 text-sm sm:text-base flex items-center justify-center gap-2.5">
+              <span data-i18n="btnExplore">つくったものをあそぶ</span>
+              <i data-lucide="gamepad-2" class="w-5 h-5"></i>
+            </a>
+            <a href="https://github.com/Suppaume1103" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto btn-nintendo-white px-8 py-4 text-sm sm:text-base flex items-center justify-center gap-2.5">
+              <i data-lucide="github" class="w-5 h-5"></i>
+              <span data-i18n="btnGithub">GitHub をのぞく</span>
+            </a>
+          </div>
+
+          <!-- Quick Stat Highlights -->
+          <div class="grid grid-cols-3 gap-3 sm:gap-6 pt-6 border-t-2 border-slate-200/80 w-full max-w-lg">
+            <div class="bg-white p-3 sm:p-4 rounded-2xl border-2 border-slate-200 shadow-sm text-center">
+              <div id="stat-public-repos" class="text-2xl sm:text-3xl font-black font-mono text-[#E60012] mb-0.5">3</div>
+              <div class="text-[11px] sm:text-xs text-slate-600 font-extrabold" data-i18n="statsRepos">公開タイトル</div>
+            </div>
+            <div class="bg-white p-3 sm:p-4 rounded-2xl border-2 border-slate-200 shadow-sm text-center">
+              <div class="text-2xl sm:text-3xl font-black font-mono text-[#00C3E3] mb-0.5">15+</div>
+              <div class="text-[11px] sm:text-xs text-slate-600 font-extrabold" data-i18n="statsTechs">習得スキル</div>
+            </div>
+            <div class="bg-white p-3 sm:p-4 rounded-2xl border-2 border-slate-200 shadow-sm text-center">
+              <div class="text-xl sm:text-2xl font-black font-mono text-[#00D26A] mb-0.5">CPS Lab</div>
+              <div class="text-[11px] sm:text-xs text-slate-600 font-extrabold" data-i18n="statsCommits">研究室 拠点</div>
+            </div>
+          </div>
         </div>
 
-        <!-- Hero Headline -->
-        <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-slate-900 mb-5 sm:mb-6 leading-[1.2] sm:leading-[1.15]">
-          <span data-i18n="heroTitlePrefix">あそび心を、</span><br>
-          <span class="text-[#E60012] inline-block animate-nintendo-float" data-i18n="heroTitleHighlight">テクノロジーでカタチに。</span>
-        </h1>
-
-        <!-- Hero Subtitle -->
-        <p class="text-sm sm:text-base md:text-xl text-slate-600 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-bold px-2" data-i18n="heroDesc">
-          知能情報処理（NLP・TF-IDF・LLM）・リアルタイムWebSocket・WebGL/3D物理演算まで。動かして楽しい、触って心地よいシステムを創るエンジニアリング。
-        </p>
-
-        <!-- CTA Action Buttons (Nintendo 3D Push Style) -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 sm:mb-16 w-full sm:w-auto px-4 sm:px-0">
-          <a href="#projects" class="w-full sm:w-auto btn-nintendo-red px-8 py-4 text-sm sm:text-base flex items-center justify-center gap-2.5">
-            <span data-i18n="btnExplore">つくったものをあそぶ</span>
-            <i data-lucide="gamepad-2" class="w-5 h-5"></i>
-          </a>
-          <a href="https://github.com/Suppaume1103" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto btn-nintendo-white px-8 py-4 text-sm sm:text-base flex items-center justify-center gap-2.5">
-            <i data-lucide="github" class="w-5 h-5"></i>
-            <span data-i18n="btnGithub">GitHub をのぞく</span>
-          </a>
-        </div>
-
-        <!-- Quick Stat Highlights (Nintendo Stats Strip) -->
-        <div class="grid grid-cols-3 gap-3 sm:gap-8 pt-6 sm:pt-8 border-t-2 border-slate-200/80 max-w-2xl w-full">
-          <div class="bg-white/80 p-3 sm:p-4 rounded-3xl border-2 border-slate-200/80 shadow-sm">
-            <div id="stat-public-repos" class="text-2xl sm:text-4xl font-black font-mono text-[#E60012] mb-0.5 sm:mb-1">3</div>
-            <div class="text-[11px] sm:text-xs text-slate-600 font-extrabold" data-i18n="statsRepos">公開タイトル</div>
-          </div>
-          <div class="bg-white/80 p-3 sm:p-4 rounded-3xl border-2 border-slate-200/80 shadow-sm">
-            <div class="text-2xl sm:text-4xl font-black font-mono text-[#00C3E3] mb-0.5 sm:mb-1">15+</div>
-            <div class="text-[11px] sm:text-xs text-slate-600 font-extrabold" data-i18n="statsTechs">習得スキル</div>
-          </div>
-          <div class="bg-white/80 p-3 sm:p-4 rounded-3xl border-2 border-slate-200/80 shadow-sm">
-            <div class="text-2xl sm:text-4xl font-black font-mono text-[#00D26A] mb-0.5 sm:mb-1">CPS Lab</div>
-            <div class="text-[11px] sm:text-xs text-slate-600 font-extrabold" data-i18n="statsCommits">研究室 拠点</div>
+        <!-- Right Column: Dedicated 3D Interactive Toy Canvas Container -->
+        <div class="lg:col-span-5 flex items-center justify-center">
+          <div class="relative w-full max-w-md bg-white rounded-3xl p-4 border-2 border-slate-200 shadow-xl overflow-hidden">
+            <!-- Joy-Con Top Color Pills -->
+            <div class="flex items-center justify-between mb-2 px-2">
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-full bg-[#00C3E3]"></span>
+                <span class="text-[10px] font-black text-slate-400 tracking-wider">3D TOY BOX</span>
+              </div>
+              <span class="w-3 h-3 rounded-full bg-[#E60012]"></span>
+            </div>
+            <!-- Canvas Mount Point -->
+            <div id="hero-canvas-container" class="rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 flex items-center justify-center"></div>
+            <!-- Caption -->
+            <p class="text-center text-[11px] font-black text-slate-400 mt-2">
+              ▲ マウスやタッチで動かしてみてね！
+            </p>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -223,15 +245,15 @@
         <!-- Switch Style Filter Tabs -->
         <div class="flex gap-2 p-1.5 rounded-full bg-white border-2 border-slate-200 overflow-x-auto no-scrollbar w-full sm:w-auto shadow-sm">
           <button class="filter-btn shrink-0 touch-target px-4 py-2 rounded-full text-xs font-black transition-all bg-[#E60012] text-white whitespace-nowrap shadow-md" data-filter="all" data-i18n="filterAll">ぜんぶ</button>
-          <button class="filter-btn shrink-0 touch-target px-4 py-2 rounded-full text-xs font-black transition-all bg-white text-slate-700 hover:text-[#E60012] whitespace-nowrap" data-filter="fullstack" data-i18n="filterFullStack">マルチプレイ & Web</button>
+          <button class="filter-btn shrink-0 touch-target px-4 py-2 rounded-full text-xs font-black transition-all bg-white text-slate-700 hover:text-[#E60012] whitespace-nowrap" data-filter="fullstack" data-i18n="filterFullStack">マルチプレイ Web</button>
           <button class="filter-btn shrink-0 touch-target px-4 py-2 rounded-full text-xs font-black transition-all bg-white text-slate-700 hover:text-[#E60012] whitespace-nowrap" data-filter="3d" data-i18n="filter3D">3D & 物理演算</button>
           <button class="filter-btn shrink-0 touch-target px-4 py-2 rounded-full text-xs font-black transition-all bg-white text-slate-700 hover:text-[#E60012] whitespace-nowrap" data-filter="ai" data-i18n="filterAI">知能処理 & NLP</button>
         </div>
       </div>
 
-      <!-- Project Cards Grid (Dynamic JS rendering) -->
+      <!-- Project Cards Grid (Dynamic JS rendering with Cover Banners) -->
       <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Rendered by main.js -->
+        <!-- Rendered by main.js with visual cover graphics -->
       </div>
     </section>
 
@@ -261,39 +283,39 @@
             <div class="w-12 h-12 rounded-2xl bg-red-100 text-[#E60012] flex items-center justify-center shrink-0 shadow-sm">
               <i data-lucide="code-2" class="w-6 h-6"></i>
             </div>
-            <div>
-              <h3 class="text-base font-black text-slate-900" data-i18n="techCatLanguages">言語スキル (Languages)</h3>
-              <p class="text-xs text-slate-500 font-bold">静的型付けと高生産性のハイブリッド</p>
+            <div class="min-w-0">
+              <h3 class="text-base font-black text-slate-900 truncate" data-i18n="techCatLanguages">言語スキル</h3>
+              <p class="text-xs text-slate-500 font-bold truncate">静的型付けと高生産性の両立</p>
             </div>
           </div>
           <div class="space-y-3">
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2 min-w-0">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#00C3E3] shrink-0"></span>
-                <span class="text-sm font-extrabold text-slate-800">TypeScript / JS</span>
+                <span class="text-sm font-extrabold text-slate-800 truncate">TypeScript / JS</span>
               </div>
-              <span class="text-xs font-mono font-bold text-[#00C3E3]">Web & 3D</span>
+              <span class="text-xs font-mono font-bold text-[#00C3E3] shrink-0 ml-2">Web & 3D</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2 min-w-0">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#E60012] shrink-0"></span>
-                <span class="text-sm font-extrabold text-slate-800">Java (Java 25)</span>
+                <span class="text-sm font-extrabold text-slate-800 truncate">Java (Java 25)</span>
               </div>
-              <span class="text-xs font-mono font-bold text-[#E60012]">NLP & Search</span>
+              <span class="text-xs font-mono font-bold text-[#E60012] shrink-0 ml-2">NLP & Search</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2 min-w-0">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#FFB300] shrink-0"></span>
-                <span class="text-sm font-extrabold text-slate-800">Python</span>
+                <span class="text-sm font-extrabold text-slate-800 truncate">Python</span>
               </div>
-              <span class="text-xs font-mono font-bold text-[#FFB300]">Data & ML</span>
+              <span class="text-xs font-mono font-bold text-[#FFB300] shrink-0 ml-2">Data & ML</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2 min-w-0">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#8C44FF] shrink-0"></span>
-                <span class="text-sm font-extrabold text-slate-800">SQL / PostgreSQL</span>
+                <span class="text-sm font-extrabold text-slate-800 truncate">SQL / PostgreSQL</span>
               </div>
-              <span class="text-xs font-mono font-bold text-[#8C44FF]">Schema & Relational</span>
+              <span class="text-xs font-mono font-bold text-[#8C44FF] shrink-0 ml-2">Relational</span>
             </div>
           </div>
         </div>
@@ -304,27 +326,27 @@
             <div class="w-12 h-12 rounded-2xl bg-purple-100 text-[#8C44FF] flex items-center justify-center shrink-0 shadow-sm">
               <i data-lucide="bot" class="w-6 h-6"></i>
             </div>
-            <div>
-              <h3 class="text-base font-black text-slate-900" data-i18n="techCatAI">知能情報処理 & NLP</h3>
-              <p class="text-xs text-slate-500 font-bold">情報検索・感情分析・LLM統合</p>
+            <div class="min-w-0">
+              <h3 class="text-base font-black text-slate-900 truncate" data-i18n="techCatAI">知能情報処理 & NLP</h3>
+              <p class="text-xs text-slate-500 font-bold truncate">情報検索・感情分析・LLM統合</p>
             </div>
           </div>
           <div class="space-y-3">
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Apache Lucene 9</span>
-              <span class="text-xs font-mono font-bold text-[#8C44FF]">TF-IDF Vector</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Apache Lucene 9</span>
+              <span class="text-xs font-mono font-bold text-[#8C44FF] shrink-0 ml-2">TF-IDF Vector</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Kuromoji & English</span>
-              <span class="text-xs font-mono font-bold text-[#8C44FF]">Morphological</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Kuromoji & English</span>
+              <span class="text-xs font-mono font-bold text-[#8C44FF] shrink-0 ml-2">Tokenizer</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Apache OpenNLP</span>
-              <span class="text-xs font-mono font-bold text-[#8C44FF]">Sentence Detector</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Apache OpenNLP</span>
+              <span class="text-xs font-mono font-bold text-[#8C44FF] shrink-0 ml-2">Sentence Split</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">OpenAI API (Java SDK)</span>
-              <span class="text-xs font-mono font-bold text-[#8C44FF]">Affective Reranking</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">OpenAI API (Java SDK)</span>
+              <span class="text-xs font-mono font-bold text-[#8C44FF] shrink-0 ml-2">LLM Rerank</span>
             </div>
           </div>
         </div>
@@ -335,27 +357,27 @@
             <div class="w-12 h-12 rounded-2xl bg-blue-100 text-[#00C3E3] flex items-center justify-center shrink-0 shadow-sm">
               <i data-lucide="layout" class="w-6 h-6"></i>
             </div>
-            <div>
-              <h3 class="text-base font-black text-slate-900" data-i18n="techCatFrontend">フロントエンド & UI</h3>
-              <p class="text-xs text-slate-500 font-bold">手触りと操作性の高いリッチUI</p>
+            <div class="min-w-0">
+              <h3 class="text-base font-black text-slate-900 truncate" data-i18n="techCatFrontend">フロントエンド & UI</h3>
+              <p class="text-xs text-slate-500 font-bold truncate">手触りと操作性の高いリッチUI</p>
             </div>
           </div>
           <div class="space-y-3">
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">React & TypeScript</span>
-              <span class="text-xs font-mono font-bold text-[#00C3E3]">Component Engine</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">React & TypeScript</span>
+              <span class="text-xs font-mono font-bold text-[#00C3E3] shrink-0 ml-2">Component</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">HTML5 Canvas API</span>
-              <span class="text-xs font-mono font-bold text-[#00C3E3]">Pixel Studio 16x16</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">HTML5 Canvas API</span>
+              <span class="text-xs font-mono font-bold text-[#00C3E3] shrink-0 ml-2">Pixel 16x16</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Tailwind CSS (CDN)</span>
-              <span class="text-xs font-mono font-bold text-[#00C3E3]">Playful Styling</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Tailwind CSS (CDN)</span>
+              <span class="text-xs font-mono font-bold text-[#00C3E3] shrink-0 ml-2">Playful UI</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Vite Build Tool</span>
-              <span class="text-xs font-mono font-bold text-[#00C3E3]">Modern ESM</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Vite Build Tool</span>
+              <span class="text-xs font-mono font-bold text-[#00C3E3] shrink-0 ml-2">Modern ESM</span>
             </div>
           </div>
         </div>
@@ -366,27 +388,27 @@
             <div class="w-12 h-12 rounded-2xl bg-green-100 text-[#00D26A] flex items-center justify-center shrink-0 shadow-sm">
               <i data-lucide="server" class="w-6 h-6"></i>
             </div>
-            <div>
-              <h3 class="text-base font-black text-slate-900" data-i18n="techCatBackend">バックエンド & 通信</h3>
-              <p class="text-xs text-slate-500 font-bold">非同期通信とマルチプレイ同期</p>
+            <div class="min-w-0">
+              <h3 class="text-base font-black text-slate-900 truncate" data-i18n="techCatBackend">バックエンド & 通信</h3>
+              <p class="text-xs text-slate-500 font-bold truncate">非同期通信とマルチプレイ同期</p>
             </div>
           </div>
           <div class="space-y-3">
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Node.js & Express</span>
-              <span class="text-xs font-mono font-bold text-[#00D26A]">REST API</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Node.js & Express</span>
+              <span class="text-xs font-mono font-bold text-[#00D26A] shrink-0 ml-2">REST API</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Socket.IO (WebSocket)</span>
-              <span class="text-xs font-mono font-bold text-[#00D26A]">Real-time Sync</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Socket.IO (WebSocket)</span>
+              <span class="text-xs font-mono font-bold text-[#00D26A] shrink-0 ml-2">Live Sync</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Cron Batch Lifecycle</span>
-              <span class="text-xs font-mono font-bold text-[#00D26A]">Growth & Expiry</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Cron Batch Lifecycle</span>
+              <span class="text-xs font-mono font-bold text-[#00D26A] shrink-0 ml-2">Auto Decay</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">OkHttp3 & Gson</span>
-              <span class="text-xs font-mono font-bold text-[#00D26A]">HTTP/2 Pipelines</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">OkHttp3 & Gson</span>
+              <span class="text-xs font-mono font-bold text-[#00D26A] shrink-0 ml-2">HTTP/2</span>
             </div>
           </div>
         </div>
@@ -397,27 +419,27 @@
             <div class="w-12 h-12 rounded-2xl bg-yellow-100 text-[#FFB300] flex items-center justify-center shrink-0 shadow-sm">
               <i data-lucide="orbit" class="w-6 h-6"></i>
             </div>
-            <div>
-              <h3 class="text-base font-black text-slate-900" data-i18n="techCat3D">3D & 物理シミュレーション</h3>
-              <p class="text-xs text-slate-500 font-bold">数学と剛体物理によるリアルな動き</p>
+            <div class="min-w-0">
+              <h3 class="text-base font-black text-slate-900 truncate" data-i18n="techCat3D">3D & 物理シミュレーション</h3>
+              <p class="text-xs text-slate-500 font-bold truncate">剛体物理によるリアルな動き</p>
             </div>
           </div>
           <div class="space-y-3">
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Three.js / WebGL</span>
-              <span class="text-xs font-mono font-bold text-[#FFB300]">Mesh & Shaders</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Three.js / WebGL</span>
+              <span class="text-xs font-mono font-bold text-[#FFB300] shrink-0 ml-2">3D Scene</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Cannon-es</span>
-              <span class="text-xs font-mono font-bold text-[#FFB300]">Rigid Body Physics</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Cannon-es</span>
+              <span class="text-xs font-mono font-bold text-[#FFB300] shrink-0 ml-2">Rigid Body</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Simplex Noise</span>
-              <span class="text-xs font-mono font-bold text-[#FFB300]">Liquid Surface Wave</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Simplex Noise</span>
+              <span class="text-xs font-mono font-bold text-[#FFB300] shrink-0 ml-2">Fluid Waves</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">lil-gui & Tween.js</span>
-              <span class="text-xs font-mono font-bold text-[#FFB300]">Runtime Tuning</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">lil-gui & Tween.js</span>
+              <span class="text-xs font-mono font-bold text-[#FFB300] shrink-0 ml-2">GUI Tuner</span>
             </div>
           </div>
         </div>
@@ -428,27 +450,27 @@
             <div class="w-12 h-12 rounded-2xl bg-rose-100 text-[#E60012] flex items-center justify-center shrink-0 shadow-sm">
               <i data-lucide="cloud" class="w-6 h-6"></i>
             </div>
-            <div>
-              <h3 class="text-base font-black text-slate-900" data-i18n="techCatInfra">データベース & ツール</h3>
-              <p class="text-xs text-slate-500 font-bold">安定した運用環境と開発基盤</p>
+            <div class="min-w-0">
+              <h3 class="text-base font-black text-slate-900 truncate" data-i18n="techCatInfra">データベース & ツール</h3>
+              <p class="text-xs text-slate-500 font-bold truncate">安定した運用環境と開発基盤</p>
             </div>
           </div>
           <div class="space-y-3">
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">PostgreSQL</span>
-              <span class="text-xs font-mono font-bold text-[#E60012]">Relational Database</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">PostgreSQL</span>
+              <span class="text-xs font-mono font-bold text-[#E60012] shrink-0 ml-2">Database</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Render Cloud Hosting</span>
-              <span class="text-xs font-mono font-bold text-[#E60012]">Managed Service</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Render Cloud</span>
+              <span class="text-xs font-mono font-bold text-[#E60012] shrink-0 ml-2">Hosting</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Git & GitHub</span>
-              <span class="text-xs font-mono font-bold text-[#E60012]">Version Control</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Git & GitHub</span>
+              <span class="text-xs font-mono font-bold text-[#E60012] shrink-0 ml-2">Git Flow</span>
             </div>
             <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
-              <span class="text-sm font-extrabold text-slate-800">Maven Build System</span>
-              <span class="text-xs font-mono font-bold text-[#E60012]">Dependency Mgmt</span>
+              <span class="text-sm font-extrabold text-slate-800 truncate">Maven Build</span>
+              <span class="text-xs font-mono font-bold text-[#E60012] shrink-0 ml-2">Dependencies</span>
             </div>
           </div>
         </div>
@@ -457,7 +479,7 @@
     </section>
 
     <!-- =====================================================================
-         About / Engineering Philosophy Section (プレイヤー情報)
+         About / Engineering Philosophy Section (Switch Player Card)
          ===================================================================== -->
     <section id="about" class="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto border-t-2 border-slate-200/80 relative">
       <div class="max-w-3xl mb-8 sm:mb-12">
@@ -473,6 +495,30 @@
         </p>
       </div>
 
+      <!-- Nintendo Switch Player Passport Card -->
+      <div class="nintendo-card p-6 sm:p-8 mb-8 bg-white flex flex-col md:flex-row items-center gap-6 sm:gap-8">
+        <!-- Player Avatar with Joy-Con Double Border -->
+        <div class="relative shrink-0">
+          <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-[#E60012] shadow-xl p-1 bg-white">
+            <img src="https://avatars.githubusercontent.com/u/232980289?v=4" alt="Suppaume Avatar" class="w-full h-full object-cover rounded-full">
+          </div>
+          <span class="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-[#00D26A] border-2 border-white shadow-md" title="Status: Online"></span>
+        </div>
+
+        <!-- Player Details -->
+        <div class="flex-1 text-center md:text-left min-w-0">
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
+            <span class="nintendo-badge text-xs">PLAYER</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-xs font-mono font-bold">@Suppaume1103</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-sky-100 text-[#00C3E3] text-xs font-bold">CPS Laboratory</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mb-2">Suppaume</h3>
+          <p class="text-xs sm:text-sm text-slate-600 font-bold leading-relaxed max-w-2xl">
+            知能情報検索（Lucene / Kuromoji / OpenAI）からリアルタイムSocket通信、Three.js剛体物理シミュレーションまで。「動いて感動する体験」を高い技術力と綺麗なアーキテクチャで実装するクリエイティブ・エンジニア。
+          </p>
+        </div>
+      </div>
+
       <!-- About Points Grid (Rendered by main.js) -->
       <div id="about-points-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Rendered by main.js -->
@@ -483,17 +529,19 @@
          Contact Section (コンタクト)
          ===================================================================== -->
     <section id="contact" class="py-16 sm:py-24 px-4 sm:px-6 max-w-5xl mx-auto border-t-2 border-slate-200/80 relative text-center">
-      <div class="nintendo-card p-8 sm:p-16 relative overflow-hidden bg-white">
-        <!-- Joy-con decorative borders -->
-        <div class="absolute left-0 top-0 bottom-0 w-3 bg-[#00C3E3]"></div>
-        <div class="absolute right-0 top-0 bottom-0 w-3 bg-[#E60012]"></div>
+      <div class="nintendo-card p-8 sm:p-14 relative overflow-hidden bg-white">
+        <!-- Switch Joy-Con Decorative Bar at Top -->
+        <div class="absolute top-0 left-0 right-0 h-3 flex">
+          <div class="flex-1 bg-[#00C3E3]"></div>
+          <div class="flex-1 bg-[#E60012]"></div>
+        </div>
 
-        <div class="relative z-10 max-w-xl mx-auto">
-          <div class="w-16 h-16 rounded-full bg-red-100 text-[#E60012] flex items-center justify-center mx-auto mb-6 shadow-md">
+        <div class="relative z-10 max-w-xl mx-auto pt-2">
+          <div class="w-16 h-16 rounded-3xl bg-red-100 text-[#E60012] flex items-center justify-center mx-auto mb-6 shadow-sm border border-red-200">
             <i data-lucide="mail" class="w-8 h-8"></i>
           </div>
 
-          <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mb-4" data-i18n="contactTitle">
+          <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mb-3" data-i18n="contactTitle">
             いっしょに新しいあそびを創りませんか？
           </h2>
           <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-8 font-bold" data-i18n="contactDesc">
@@ -520,11 +568,11 @@
   <!-- Global Footer -->
   <footer class="border-t-2 border-slate-200 py-10 px-4 sm:px-6 bg-white">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-black text-slate-500 text-center sm:text-left">
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 justify-center sm:justify-start">
         <span class="w-3 h-3 rounded-full bg-[#E60012] shrink-0"></span>
         <span>Suppaume — Nintendo Spirit Portfolio &copy; 2026</span>
       </div>
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-6 justify-center sm:justify-start">
         <a href="https://github.com/Suppaume1103" target="_blank" rel="noopener noreferrer" class="hover:text-[#E60012] transition-colors">GitHub</a>
         <a href="#projects" class="hover:text-[#E60012] transition-colors">Works</a>
         <a href="#tech-stack" class="hover:text-[#E60012] transition-colors">Skills</a>

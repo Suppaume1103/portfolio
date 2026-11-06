@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Nintendo-Style Creative & Playful Stylesheet
+   Nintendo-Style Creative & Playful Stylesheet (Layout Fixed & Polished)
    Designed for Suppaume (@Suppaume1103)
    ========================================================================== */
 
@@ -21,8 +21,8 @@
 
 /* Custom Nintendo-Style Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
   background: #F6F7FB;
@@ -60,15 +60,10 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* Dot Grid Background Pattern (Playful polka dots) */
+/* Dot Grid Background Pattern */
 .bg-nintendo-dots {
-  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1.5px, transparent 1.5px);
   background-size: 24px 24px;
-}
-
-.bg-stripes-pattern {
-  background-size: 20px 20px;
-  background-image: repeating-linear-gradient(45deg, rgba(230, 0, 18, 0.03) 0, rgba(230, 0, 18, 0.03) 2px, transparent 0, transparent 10px);
 }
 
 /* Nintendo Capsule Logo Badge */
@@ -80,55 +75,30 @@ body {
   color: #FFFFFF;
   font-weight: 800;
   border-radius: 9999px;
-  padding: 4px 18px;
-  letter-spacing: -0.02em;
-  box-shadow: 0 4px 12px rgba(230, 0, 18, 0.3);
-}
-
-/* Nintendo Switch Joy-Con Accents */
-.joycon-border-glow {
-  position: relative;
-}
-.joycon-border-glow::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 6px;
-  border-radius: 9999px 0 0 9999px;
-  background: var(--joycon-blue);
-}
-.joycon-border-glow::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 6px;
-  border-radius: 0 9999px 9999px 0;
-  background: var(--joycon-red);
+  padding: 4px 14px;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 12px rgba(230, 0, 18, 0.25);
 }
 
 /* Pop & Bouncy Cards (Switch Card Style) */
 .nintendo-card {
   background: var(--bg-surface);
-  border: 2px solid #EBECEF;
-  border-radius: 28px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 4px 0px #E5E7EB;
+  border: 2px solid #E5E7EB;
+  border-radius: 24px;
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.04), 0 3px 0px #E5E7EB;
   transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @media (hover: hover) {
   .nintendo-card:hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.08), 0 6px 0px #E60012;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 30px -6px rgba(0, 0, 0, 0.08), 0 5px 0px #E60012;
     border-color: #E60012;
   }
 }
 
 .nintendo-card:active {
-  transform: translateY(-2px) scale(0.99);
+  transform: translateY(-1px);
   box-shadow: 0 6px 15px -3px rgba(0, 0, 0, 0.06), 0 2px 0px #E60012;
 }
 
@@ -138,19 +108,19 @@ body {
   color: #FFFFFF;
   border-radius: 9999px;
   font-weight: 800;
-  box-shadow: 0 5px 0px #9e000c, 0 8px 15px rgba(230, 0, 18, 0.35);
+  box-shadow: 0 4px 0px #9e000c, 0 6px 14px rgba(230, 0, 18, 0.3);
   transition: all 0.15s ease;
 }
 
 .btn-nintendo-red:hover {
   background: #f50c20;
   transform: translateY(-1px);
-  box-shadow: 0 6px 0px #9e000c, 0 10px 20px rgba(230, 0, 18, 0.4);
+  box-shadow: 0 5px 0px #9e000c, 0 8px 18px rgba(230, 0, 18, 0.35);
 }
 
 .btn-nintendo-red:active {
-  transform: translateY(4px);
-  box-shadow: 0 1px 0px #9e000c, 0 3px 6px rgba(230, 0, 18, 0.2);
+  transform: translateY(3px);
+  box-shadow: 0 1px 0px #9e000c, 0 2px 5px rgba(230, 0, 18, 0.2);
 }
 
 .btn-nintendo-white {
@@ -159,7 +129,7 @@ body {
   border: 2px solid #E5E7EB;
   border-radius: 9999px;
   font-weight: 800;
-  box-shadow: 0 4px 0px #D1D5DB;
+  box-shadow: 0 3px 0px #D1D5DB;
   transition: all 0.15s ease;
 }
 
@@ -167,26 +137,17 @@ body {
   background: #F9FAFB;
   border-color: #CBD5E1;
   transform: translateY(-1px);
-  box-shadow: 0 5px 0px #94A3B8;
+  box-shadow: 0 4px 0px #94A3B8;
 }
 
 .btn-nintendo-white:active {
-  transform: translateY(3px);
+  transform: translateY(2px);
   box-shadow: 0 1px 0px #94A3B8;
-}
-
-/* Joy-Con Toggle Button (Blue/Red pill) */
-.joycon-pill {
-  position: relative;
-  overflow: hidden;
-  border-radius: 9999px;
-  background: #FFFFFF;
-  border: 2px solid #E5E7EB;
 }
 
 /* Header Glass with White & Red Edge */
 .nintendo-nav {
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 3px solid #E60012;
@@ -210,15 +171,23 @@ body {
   transform: translateY(0);
 }
 
-/* Canvas background container */
-#hero-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Canvas container for 3D Hero */
+#hero-canvas-container {
+  position: relative;
   width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
+  height: 320px;
+}
+
+@media (min-width: 1024px) {
+  #hero-canvas-container {
+    height: 440px;
+  }
+}
+
+#hero-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
 }
 
 /* Modal Overlay & Bouncy Dialog */
@@ -233,11 +202,11 @@ body {
 }
 
 .modal-content {
-  transform: scale(0.92) translateY(20px);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: scale(0.95) translateY(15px);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   border: 3px solid #E60012;
-  border-radius: 36px;
-  box-shadow: 0 25px 60px -15px rgba(230, 0, 18, 0.2), 0 10px 0px #b8000e;
+  border-radius: 28px;
+  box-shadow: 0 25px 50px -12px rgba(230, 0, 18, 0.2);
 }
 .modal-overlay.active .modal-content {
   transform: scale(1) translateY(0);
@@ -249,12 +218,12 @@ body {
   min-width: 44px;
 }
 
-/* Fun Floating Animation */
-@keyframes nintendo-float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(1.5deg); }
+/* Clean Gentle Floating Badge (No Text Rotation) */
+@keyframes gentle-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
-.animate-nintendo-float {
-  animation: nintendo-float 4s infinite ease-in-out;
+.animate-gentle-bounce {
+  animation: gentle-bounce 3s infinite ease-in-out;
 }

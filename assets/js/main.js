@@ -1,5 +1,5 @@
 /**
- * Nintendo-Style Interactive Engine (Playful & Responsive)
+ * Nintendo-Style Interactive Engine (Fixed Layout & Visuals)
  * Suppaume (@Suppaume1103)
  */
 
@@ -31,7 +31,7 @@ function playSwitchClick() {
     osc.frequency.setValueAtTime(1200, ctx.currentTime);
     osc.frequency.exponentialRampToValueAtTime(300, ctx.currentTime + 0.045);
 
-    gain.gain.setValueAtTime(0.25, ctx.currentTime);
+    gain.gain.setValueAtTime(0.22, ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.045);
 
     osc.connect(gain);
@@ -92,7 +92,7 @@ function playCoinSound() {
   } catch (e) {}
 }
 
-// --- Project Data Store (Nintendo Themed) ---
+// --- Project Data Store (With Visual Banners) ---
 const projectsData = {
   'dot-sticker-chat': {
     title: {
@@ -104,11 +104,24 @@ const projectsData = {
       en: '16x16 Pixel Art Studio with Shared Live Plaza & Growing Stickers'
     },
     category: 'fullstack',
-    badge: 'マルチプレイ Web / WebSocket',
-    themeColor: '#FF3C28', // Joy-Con Red
-    lang: 'React / TypeScript / Node.js',
+    badge: 'マルチプレイ Web',
+    themeColor: '#FF3C28',
+    lang: 'React / TS / Node.js',
     stars: 0,
     githubUrl: 'https://github.com/Suppaume1103/dot-sticker-chat',
+    // Visual Banner SVG
+    bannerSvg: `
+      <div class="w-full h-36 bg-gradient-to-tr from-rose-500 via-orange-400 to-amber-300 flex items-center justify-center relative overflow-hidden rounded-t-[22px]">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_2px,transparent_2px)] [background-size:12px_12px]"></div>
+        <div class="relative z-10 flex items-center gap-3 bg-white/95 px-4 py-2 rounded-2xl shadow-lg border border-white">
+          <span class="text-2xl">🎨</span>
+          <div class="flex flex-col">
+            <span class="text-xs font-black text-slate-800 tracking-wider">PIXEL PLAZA 16×16</span>
+            <span class="text-[10px] font-bold text-rose-500">Live Socket.IO Sync</span>
+          </div>
+        </div>
+      </div>
+    `,
     summary: {
       ja: 'お題に合わせて16×16のドット絵を描き、みんなが集まるリアルタイム広場やチャットで流通！一定時間で一斉失効する儚さと、他プレイヤーの保存数（お気に入り）に応じてステッカーがぐんぐん育つ、あそび心満載のフルスタックWebアプリケーションです。',
       en: 'A delightfully playful online platform where users craft 16x16 pixel stickers, share them in an interactive live plaza, and chat in real-time. Features dynamic size growth based on popularity and timed lifecycle expiration.'
@@ -152,11 +165,24 @@ const projectsData = {
       en: 'Serene Japanese Auspicious Tea Stalk Simulation with Rigid-body Physics'
     },
     category: '3d',
-    badge: '3D 物理演算 / WebGL',
-    themeColor: '#00D26A', // Joy-Con Green
+    badge: '3D 物理演算',
+    themeColor: '#00D26A',
     lang: 'TypeScript / Three.js',
     stars: 0,
     githubUrl: 'https://github.com/Suppaume1103/CGModeling-FinalProject-Bowling',
+    // Visual Banner SVG
+    bannerSvg: `
+      <div class="w-full h-36 bg-gradient-to-tr from-emerald-600 via-teal-500 to-green-300 flex items-center justify-center relative overflow-hidden rounded-t-[22px]">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_2px,transparent_2px)] [background-size:12px_12px]"></div>
+        <div class="relative z-10 flex items-center gap-3 bg-white/95 px-4 py-2 rounded-2xl shadow-lg border border-white">
+          <span class="text-2xl">🍵</span>
+          <div class="flex flex-col">
+            <span class="text-xs font-black text-slate-800 tracking-wider">MATCHA & PHYSICS</span>
+            <span class="text-[10px] font-bold text-emerald-600">Cannon-es Rigid Body</span>
+          </div>
+        </div>
+      </div>
+    `,
     summary: {
       ja: '日本の伝統的な幸運のしるし「茶碗の中のお茶に茶柱が立っている状態」を、Three.jsと剛体物理演算エンジンCannon-esでリアルタイム3D再現！数学的ノイズ（Simplex Noise）による液面の波動表現と、パラメータを自在にいじれるGUIデバッグを搭載。',
       en: 'A high-fidelity 3D WebGL physics simulation capturing the serene Japanese auspicious phenomenon of a tea stalk standing upright in a matcha bowl. Built with Three.js, Cannon-es rigid-body physics, and Simplex Noise fluid ripples.'
@@ -200,11 +226,24 @@ const projectsData = {
       en: 'Intelligent Movie Recommender synthesizing NLP, TF-IDF & LLM'
     },
     category: 'ai',
-    badge: '知能情報処理 / NLP & AI',
-    themeColor: '#00C3E3', // Joy-Con Blue
-    lang: 'Java 25 / Lucene / OpenNLP',
+    badge: '知能情報処理',
+    themeColor: '#00C3E3',
+    lang: 'Java 25 / Lucene',
     stars: 0,
     githubUrl: 'https://github.com/Suppaume1103/Mood-Bridge-Movie-Recommender',
+    // Visual Banner SVG
+    bannerSvg: `
+      <div class="w-full h-36 bg-gradient-to-tr from-cyan-600 via-blue-500 to-indigo-300 flex items-center justify-center relative overflow-hidden rounded-t-[22px]">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_2px,transparent_2px)] [background-size:12px_12px]"></div>
+        <div class="relative z-10 flex items-center gap-3 bg-white/95 px-4 py-2 rounded-2xl shadow-lg border border-white">
+          <span class="text-2xl">🎬</span>
+          <div class="flex flex-col">
+            <span class="text-xs font-black text-slate-800 tracking-wider">AFFECTIVE CINEMA</span>
+            <span class="text-[10px] font-bold text-sky-600">Lucene TF-IDF & OpenAI</span>
+          </div>
+        </div>
+      </div>
+    `,
     summary: {
       ja: 'ユーザーの「今の気分」や言葉にしづらい感情から、TMDBの膨大な映画レビューやあらすじを形態素解析・文分割・TF-IDFベクトル空間モデルで高速マッチング！さらにOpenAI APIとのハイブリッド推論で、最高の1本をパーソナライズ推薦してくれる知能システム。',
       en: 'An intelligent recommendation system that bridges user emotions with cinema. Leveraging Apache Lucene (TF-IDF), Kuromoji morphological analysis, Apache OpenNLP sentence splitting, TMDB API, and OpenAI API to deliver personalized film discovery.'
@@ -245,14 +284,14 @@ const projectsData = {
   }
 };
 
-// --- Localization Strings (Nintendo Playful Style) ---
+// --- Localization Strings ---
 const i18n = {
   ja: {
     navProjects: 'つくったもの',
     navTech: 'そうび・とくぎ',
     navAbout: 'プレイヤー情報',
     navContact: 'コンタクト',
-    statusAvailable: 'オンライン / 開発受付中',
+    statusAvailable: 'オンライン',
     heroTag: 'PLAYFUL × INTELLIGENCE × ENGINEERING',
     heroTitlePrefix: 'あそび心を、',
     heroTitleHighlight: 'テクノロジーでカタチに。',
@@ -266,9 +305,9 @@ const i18n = {
     sectionWorksTitle: 'あそびと技術の実験室',
     sectionWorksDesc: 'GitHubに公開中の主要タイトル。アーキテクチャからUI・物理演算・NLPモデルまで、ワクワクする体験を目指して実装しています。',
     filterAll: 'ぜんぶ',
-    filterAI: '知能処理 & NLP',
-    filterFullStack: 'マルチプレイ & Web',
+    filterFullStack: 'マルチプレイ Web',
     filter3D: '3D & 物理演算',
+    filterAI: '知能処理 & NLP',
     viewDetails: 'くわしく見る',
     sourceCode: 'ソースコード',
     sectionTechTag: 'ABILITIES & SKILLS',
@@ -277,7 +316,7 @@ const i18n = {
     techCatLanguages: '言語スキル (Languages)',
     techCatAI: '知能情報処理 & NLP',
     techCatFrontend: 'フロントエンド & UI',
-    techCatBackend: 'バックエンド & リアルタイム',
+    techCatBackend: 'バックエンド & 通信',
     techCat3D: '3D & 物理シミュレーション',
     techCatInfra: 'データベース & ツール',
     sectionAboutTag: 'PLAYER PROFILE',
@@ -308,7 +347,7 @@ const i18n = {
     navTech: 'Skills',
     navAbout: 'Player Info',
     navContact: 'Contact',
-    statusAvailable: 'Online / Open to Quest',
+    statusAvailable: 'Online',
     heroTag: 'PLAYFUL × INTELLIGENCE × ENGINEERING',
     heroTitlePrefix: 'Shaping Playful Ideas into',
     heroTitleHighlight: 'High-Performance Reality.',
@@ -322,9 +361,9 @@ const i18n = {
     sectionWorksTitle: 'Playful Lab & Signature Works',
     sectionWorksDesc: 'Key open-source projects on GitHub, crafted with rigorous architecture and lively interactivity.',
     filterAll: 'All',
-    filterAI: 'AI & NLP',
-    filterFullStack: 'Multiplayer & Web',
+    filterFullStack: 'Multiplayer Web',
     filter3D: '3D & Physics',
+    filterAI: 'AI & NLP',
     viewDetails: 'Read Details',
     sourceCode: 'Source Code',
     sectionTechTag: 'ABILITIES & SKILLS',
@@ -388,16 +427,16 @@ function initSoundToggle() {
     soundEnabled = !soundEnabled;
     const icon = soundBtn.querySelector('i');
     if (soundEnabled) {
-      soundBtn.classList.remove('opacity-50');
+      soundBtn.classList.remove('opacity-40');
       soundBtn.title = 'Sound Effects: ON';
       playSwitchClick();
     } else {
-      soundBtn.classList.add('opacity-50');
+      soundBtn.classList.add('opacity-40');
       soundBtn.title = 'Sound Effects: OFF';
     }
   });
 
-  // Attach sound to interactive links & buttons
+  // Attach click sound to buttons & links
   document.addEventListener('click', (e) => {
     if (e.target.closest('button, .filter-btn, .mobile-nav-link')) {
       playSwitchClick();
@@ -445,19 +484,23 @@ function initMobileMenu() {
   });
 }
 
-// --- Three.js Playful Nintendo Toy World (Joy-Con & Blocks) ---
+// --- Three.js Playful 3D Toy Canvas (Separated in its own right-column container) ---
 function initNintendoThreeHero() {
   const container = document.getElementById('hero-canvas-container');
   if (!container || !window.THREE) return;
 
+  const width = container.clientWidth || 320;
+  const height = container.clientHeight || 320;
+
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.z = 22;
+  const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
+  camera.position.z = 18;
 
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setSize(width, height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.domElement.id = 'hero-canvas';
+  container.innerHTML = '';
   container.appendChild(renderer.domElement);
 
   // Group to rotate
@@ -465,15 +508,15 @@ function initNintendoThreeHero() {
   scene.add(group);
 
   // Lighting
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
   scene.add(ambientLight);
 
-  const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+  const dirLight = new THREE.DirectionalLight(0xffffff, 1.1);
   dirLight.position.set(10, 20, 15);
   scene.add(dirLight);
 
   // 1. Center Hero Block (Mario/Switch Question Block Style)
-  const cubeGeo = new THREE.BoxGeometry(5.2, 5.2, 5.2);
+  const cubeGeo = new THREE.BoxGeometry(4.2, 4.2, 4.2);
   const cubeMat = new THREE.MeshStandardMaterial({
     color: 0xE60012, // Nintendo Red
     roughness: 0.25,
@@ -482,13 +525,13 @@ function initNintendoThreeHero() {
   const centerCube = new THREE.Mesh(cubeGeo, cubeMat);
   group.add(centerCube);
 
-  // Wireframe outline for pop look
+  // Outline for pop look
   const edges = new THREE.EdgesGeometry(cubeGeo);
   const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2 });
   const wireCube = new THREE.LineSegments(edges, lineMat);
   centerCube.add(wireCube);
 
-  // 2. Orbiting Floating Joy-Con Color Spheres & Floating Toys
+  // 2. Orbiting Floating Joy-Con Color Spheres & Toys
   const toysGroup = new THREE.Group();
   group.add(toysGroup);
 
@@ -501,12 +544,12 @@ function initNintendoThreeHero() {
   ];
 
   const floatingMeshes = [];
-  const toyCount = window.innerWidth < 640 ? 12 : 22;
+  const toyCount = 14;
 
   for (let i = 0; i < toyCount; i++) {
-    const isBox = Math.random() > 0.45;
-    const size = 0.8 + Math.random() * 0.9;
-    const geo = isBox ? new THREE.BoxGeometry(size, size, size) : new THREE.SphereGeometry(size * 0.65, 16, 16);
+    const isBox = Math.random() > 0.5;
+    const size = 0.7 + Math.random() * 0.7;
+    const geo = isBox ? new THREE.BoxGeometry(size, size, size) : new THREE.SphereGeometry(size * 0.6, 16, 16);
     
     const mat = new THREE.MeshStandardMaterial({
       color: toyColors[i % toyColors.length],
@@ -515,7 +558,7 @@ function initNintendoThreeHero() {
     });
 
     const mesh = new THREE.Mesh(geo, mat);
-    const radius = 7 + Math.random() * 8;
+    const radius = 5.5 + Math.random() * 5.5;
     const theta = Math.random() * Math.PI * 2;
     const phi = Math.acos(Math.random() * 2 - 1);
 
@@ -537,106 +580,64 @@ function initNintendoThreeHero() {
     floatingMeshes.push(mesh);
   }
 
-  // 3. Playful Confetti Particle Field (Star-like specks)
-  const particleCount = window.innerWidth < 640 ? 80 : 160;
-  const particleGeometry = new THREE.BufferGeometry();
-  const positions = new Float32Array(particleCount * 3);
-  const colors = new Float32Array(particleCount * 3);
-
-  const particlePalette = [
-    new THREE.Color(0xE60012),
-    new THREE.Color(0x00C3E3),
-    new THREE.Color(0xFFB300),
-    new THREE.Color(0x00D26A)
-  ];
-
-  for (let i = 0; i < particleCount; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 45;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 45;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 30;
-
-    const c = particlePalette[Math.floor(Math.random() * particlePalette.length)];
-    colors[i * 3] = c.r;
-    colors[i * 3 + 1] = c.g;
-    colors[i * 3 + 2] = c.b;
-  }
-
-  particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-  const particleMat = new THREE.PointsMaterial({
-    size: 0.35,
-    vertexColors: true,
-    transparent: true,
-    opacity: 0.8
-  });
-
-  const particles = new THREE.Points(particleGeometry, particleMat);
-  scene.add(particles);
-
-  // Mouse & Touch Parallax Interaction
+  // Pointer Interaction
   let targetRotationX = 0;
   let targetRotationY = 0;
-  let windowHalfX = window.innerWidth / 2;
-  let windowHalfY = window.innerHeight / 2;
 
   window.addEventListener('mousemove', (event) => {
-    const mouseX = event.clientX - windowHalfX;
-    const mouseY = event.clientY - windowHalfY;
-    targetRotationY = (mouseX / windowHalfX) * 0.55;
-    targetRotationX = (mouseY / windowHalfY) * 0.55;
+    const rect = container.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const mouseX = event.clientX - centerX;
+    const mouseY = event.clientY - centerY;
+    targetRotationY = (mouseX / window.innerWidth) * 1.5;
+    targetRotationX = (mouseY / window.innerHeight) * 1.5;
   }, { passive: true });
 
   window.addEventListener('touchmove', (event) => {
     if (event.touches.length > 0) {
-      const touchX = event.touches[0].clientX - windowHalfX;
-      const touchY = event.touches[0].clientY - windowHalfY;
-      targetRotationY = (touchX / windowHalfX) * 0.45;
-      targetRotationX = (touchY / windowHalfY) * 0.45;
+      const rect = container.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const touchX = event.touches[0].clientX - centerX;
+      const touchY = event.touches[0].clientY - centerY;
+      targetRotationY = (touchX / window.innerWidth) * 1.2;
+      targetRotationX = (touchY / window.innerHeight) * 1.2;
     }
   }, { passive: true });
 
   // Window Resize
   window.addEventListener('resize', () => {
-    windowHalfX = window.innerWidth / 2;
-    windowHalfY = window.innerHeight / 2;
-    camera.aspect = container.clientWidth / container.clientHeight;
+    const newWidth = container.clientWidth || 320;
+    const newHeight = container.clientHeight || 320;
+    camera.aspect = newWidth / newHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setSize(newWidth, newHeight);
   });
 
-  // Animation Loop (Bouncy & Playful)
+  // Animation Loop
   let clock = new THREE.Clock();
 
   function animate() {
     requestAnimationFrame(animate);
     const time = clock.getElapsedTime();
 
-    // Constant slow rotation with bounce
     centerCube.rotation.y += 0.012;
-    centerCube.rotation.x = Math.sin(time * 1.2) * 0.25;
+    centerCube.rotation.x = Math.sin(time * 1.2) * 0.2;
 
-    // Pop scale bounce on center cube
-    const scale = 1 + Math.sin(time * 2.5) * 0.04;
+    const scale = 1 + Math.sin(time * 2.5) * 0.035;
     centerCube.scale.set(scale, scale, scale);
 
-    // Orbit toys
-    toysGroup.rotation.y -= 0.006;
-    toysGroup.rotation.z = Math.sin(time * 0.8) * 0.15;
+    toysGroup.rotation.y -= 0.007;
 
-    // Individual floating toys rotation & wave
     floatingMeshes.forEach(mesh => {
       mesh.rotation.x += mesh.userData.rotSpeedX;
       mesh.rotation.y += mesh.userData.rotSpeedY;
-      mesh.position.y = mesh.userData.initialY + Math.sin(time * mesh.userData.floatSpeed + mesh.userData.floatOffset) * 0.6;
+      mesh.position.y = mesh.userData.initialY + Math.sin(time * mesh.userData.floatSpeed + mesh.userData.floatOffset) * 0.45;
     });
 
-    // Particle field gentle drift
-    particles.rotation.y = time * 0.02;
-
-    // Inertia towards pointer
-    group.rotation.y += (targetRotationY - group.rotation.y) * 0.045;
-    group.rotation.x += (targetRotationX - group.rotation.x) * 0.045;
+    group.rotation.y += (targetRotationY - group.rotation.y) * 0.05;
+    group.rotation.x += (targetRotationX - group.rotation.x) * 0.05;
 
     renderer.render(scene, camera);
   }
@@ -677,15 +678,15 @@ function applyLanguage(lang) {
   }
 }
 
-// --- Render Project Cards (Nintendo Switch Software Card Style) ---
+// --- Render Project Cards (With Visual Cover Banners) ---
 function renderProjectCards(lang) {
   const container = document.getElementById('projects-grid');
   if (!container) return;
 
   const categoryIcons = {
-    'fullstack': '<i data-lucide="layers" class="w-5 h-5 text-[#FF3C28]"></i>',
-    '3d': '<i data-lucide="box" class="w-5 h-5 text-[#00D26A]"></i>',
-    'ai': '<i data-lucide="cpu" class="w-5 h-5 text-[#00C3E3]"></i>'
+    'fullstack': '<i data-lucide="layers" class="w-4 h-4 text-[#FF3C28]"></i>',
+    '3d': '<i data-lucide="box" class="w-4 h-4 text-[#00D26A]"></i>',
+    'ai': '<i data-lucide="cpu" class="w-4 h-4 text-[#00C3E3]"></i>'
   };
 
   const projectKeys = ['dot-sticker-chat', 'tea-pillar-bowling', 'mood-bridge'];
@@ -695,52 +696,54 @@ function renderProjectCards(lang) {
     const icon = categoryIcons[p.category];
 
     const techPills = p.techStack.slice(0, 4).map(t => 
-      `<span class="px-2.5 py-1 text-xs rounded-full bg-slate-100 text-slate-700 font-bold border border-slate-200">${t}</span>`
+      `<span class="px-2.5 py-1 text-[11px] sm:text-xs rounded-full bg-slate-100 text-slate-700 font-bold border border-slate-200 shrink-0">${t}</span>`
     ).join('');
 
     return `
-      <div class="nintendo-card p-6 flex flex-col justify-between group relative overflow-hidden project-card" data-category="${p.category}">
-        <!-- Top Colored Edge Accent (Joy-Con color) -->
-        <div class="absolute top-0 left-0 right-0 h-2" style="background-color: ${p.themeColor}"></div>
-
+      <div class="nintendo-card flex flex-col justify-between group overflow-hidden project-card" data-category="${p.category}">
         <div>
-          <!-- Card Header & Badge -->
-          <div class="flex items-center justify-between gap-2 mb-4 pt-1">
-            <div class="flex items-center gap-2">
-              <div class="w-10 h-10 rounded-2xl bg-slate-50 border-2 border-slate-200 flex items-center justify-center shrink-0 shadow-sm">
-                ${icon}
+          <!-- Visual Software Cover Banner (Image/Graphic) -->
+          ${p.bannerSvg}
+
+          <div class="p-5 sm:p-6">
+            <!-- Header Badges -->
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2 min-w-0">
+                <div class="w-7 h-7 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0">
+                  ${icon}
+                </div>
+                <span class="text-xs font-black uppercase tracking-wider text-slate-600 truncate">${p.badge}</span>
               </div>
-              <span class="text-xs font-extrabold uppercase tracking-wider text-slate-600">${p.badge}</span>
+              <span class="text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full font-black text-white shrink-0 shadow-sm" style="background-color: ${p.themeColor}">
+                ${p.lang}
+              </span>
             </div>
-            <span class="text-xs px-3 py-1 rounded-full font-bold text-white shadow-sm" style="background-color: ${p.themeColor}">
-              ${p.lang}
-            </span>
+
+            <!-- Title & Subtitle -->
+            <h3 class="text-xl font-black text-slate-900 group-hover:text-[#E60012] transition-colors mb-1.5 tracking-tight leading-snug">
+              ${p.title[lang]}
+            </h3>
+            <p class="text-xs sm:text-sm font-bold text-slate-500 mb-3 leading-relaxed">
+              ${p.subtitle[lang]}
+            </p>
+
+            <!-- Summary Body -->
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-3 mb-4">
+              ${p.summary[lang]}
+            </p>
           </div>
-
-          <!-- Title & Subtitle -->
-          <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-[#E60012] transition-colors mb-1 tracking-tight">
-            ${p.title[lang]}
-          </h3>
-          <p class="text-xs sm:text-sm font-bold text-slate-500 mb-3">
-            ${p.subtitle[lang]}
-          </p>
-
-          <!-- Summary Body -->
-          <p class="text-slate-600 text-sm leading-relaxed mb-6 line-clamp-3">
-            ${p.summary[lang]}
-          </p>
         </div>
 
-        <div>
+        <div class="px-5 pb-5 sm:px-6 sm:pb-6">
           <!-- Tech Stack Tags -->
-          <div class="flex flex-wrap gap-1.5 mb-6">
+          <div class="flex flex-wrap gap-1.5 mb-5">
             ${techPills}
             ${p.techStack.length > 4 ? `<span class="px-2 py-0.5 text-xs rounded-full text-slate-500 font-bold">+${p.techStack.length - 4}</span>` : ''}
           </div>
 
           <!-- Action Buttons -->
-          <div class="flex items-center gap-3 pt-4 border-t-2 border-slate-100">
-            <button onclick="openModal('${key}')" class="flex-1 btn-nintendo-red py-3 px-4 text-xs font-extrabold flex items-center justify-center gap-2">
+          <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
+            <button onclick="openModal('${key}')" class="flex-1 btn-nintendo-red py-3 px-4 text-xs font-black flex items-center justify-center gap-2">
               <i data-lucide="play" class="w-4 h-4 fill-current"></i>
               <span>${i18n[lang].viewDetails}</span>
             </button>
@@ -754,7 +757,7 @@ function renderProjectCards(lang) {
   }).join('');
 }
 
-// --- Render About Points (Nintendo Profile Badges) ---
+// --- Render About Points ---
 function renderAboutPoints(lang) {
   const container = document.getElementById('about-points-container');
   if (!container) return;
@@ -764,17 +767,17 @@ function renderAboutPoints(lang) {
   const colors = ['#E60012', '#00C3E3', '#FFB300'];
 
   container.innerHTML = points.map((p, idx) => `
-    <div class="nintendo-card p-6 flex flex-col justify-start">
-      <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 shrink-0 shadow-sm" style="background-color: ${colors[idx % colors.length]}18; color: ${colors[idx % colors.length]}">
-        <i data-lucide="${icons[idx % icons.length]}" class="w-6 h-6"></i>
+    <div class="nintendo-card p-5 sm:p-6 flex flex-col justify-start">
+      <div class="w-11 h-11 rounded-2xl flex items-center justify-center mb-3 shrink-0 shadow-sm" style="background-color: ${colors[idx % colors.length]}18; color: ${colors[idx % colors.length]}">
+        <i data-lucide="${icons[idx % icons.length]}" class="w-5 h-5"></i>
       </div>
-      <h4 class="text-base font-extrabold text-slate-900 mb-2">${p.title}</h4>
-      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${p.desc}</p>
+      <h4 class="text-base font-black text-slate-900 mb-1.5">${p.title}</h4>
+      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">${p.desc}</p>
     </div>
   `).join('');
 }
 
-// --- Interactive Project Detail Modal (Switch Dialog) ---
+// --- Interactive Project Detail Modal ---
 function initModals() {
   const overlay = document.getElementById('project-modal');
   const closeBtn = document.getElementById('modal-close-btn');
@@ -806,9 +809,9 @@ window.openModal = function(key) {
   const lang = currentLang;
 
   const highlightsHtml = p.highlights.map(h => `
-    <div class="p-4 rounded-2xl bg-slate-50 border-2 border-slate-100">
-      <h5 class="text-xs sm:text-sm font-extrabold text-slate-900 mb-1 flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full" style="background-color: ${p.themeColor}"></span>
+    <div class="p-3.5 sm:p-4 rounded-2xl bg-slate-50 border-2 border-slate-100">
+      <h5 class="text-xs sm:text-sm font-black text-slate-900 mb-1 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full shrink-0" style="background-color: ${p.themeColor}"></span>
         ${h.title[lang]}
       </h5>
       <p class="text-xs text-slate-600 leading-relaxed">${h.desc[lang]}</p>
@@ -821,28 +824,28 @@ window.openModal = function(key) {
 
   modalBody.innerHTML = `
     <!-- Modal Header -->
-    <div class="mb-6 pr-10 sm:pr-0">
+    <div class="mb-5 sm:mb-6 pr-12 sm:pr-0">
       <div class="flex flex-wrap items-center gap-2 mb-2">
-        <span class="px-3 py-1 rounded-full text-xs font-extrabold text-white shadow-sm" style="background-color: ${p.themeColor}">${p.badge}</span>
+        <span class="px-3 py-1 rounded-full text-xs font-black text-white shadow-sm" style="background-color: ${p.themeColor}">${p.badge}</span>
         <span class="text-xs text-slate-500 font-bold">${p.lang}</span>
       </div>
       <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-1">${p.title[lang]}</h3>
-      <p class="text-sm font-bold text-slate-500">${p.subtitle[lang]}</p>
+      <p class="text-xs sm:text-sm font-bold text-slate-500">${p.subtitle[lang]}</p>
     </div>
 
     <!-- Summary -->
-    <div class="mb-6">
-      <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">
+    <div class="mb-5 sm:mb-6">
+      <h4 class="text-xs font-black uppercase tracking-wider text-slate-400 mb-2">
         ${lang === 'ja' ? 'タイトル紹介' : 'Game Overview'}
       </h4>
-      <p class="text-sm text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-2xl border-2 border-slate-100">
+      <p class="text-xs sm:text-sm text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-2xl border-2 border-slate-100 font-medium">
         ${p.summary[lang]}
       </p>
     </div>
 
     <!-- Key Technical Highlights -->
-    <div class="mb-6">
-      <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-3">
+    <div class="mb-5 sm:mb-6">
+      <h4 class="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">
         ${lang === 'ja' ? 'ここがすごい！主要技術ポイント' : 'Technical Highlights'}
       </h4>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -851,28 +854,28 @@ window.openModal = function(key) {
     </div>
 
     <!-- Architecture ASCII Diagram -->
-    <div class="mb-6">
-      <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">
+    <div class="mb-5 sm:mb-6">
+      <h4 class="text-xs font-black uppercase tracking-wider text-slate-400 mb-2">
         ${lang === 'ja' ? 'システム構成ダイアグラム' : 'System Architecture'}
       </h4>
-      <div class="rounded-2xl bg-[#1E232A] p-4 border-2 border-slate-800 overflow-x-auto shadow-inner">
-        <pre class="text-xs font-mono text-[#00C3E3] leading-tight whitespace-pre">${p.architecture.trim()}</pre>
+      <div class="rounded-2xl bg-[#1E232A] p-3 sm:p-4 border-2 border-slate-800 overflow-x-auto shadow-inner">
+        <pre class="text-[10px] sm:text-xs font-mono text-[#00C3E3] leading-tight whitespace-pre">${p.architecture.trim()}</pre>
       </div>
     </div>
 
     <!-- Tech Stack Matrix -->
     <div class="mb-6">
-      <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">
+      <h4 class="text-xs font-black uppercase tracking-wider text-slate-400 mb-2">
         ${lang === 'ja' ? 'そうびした技術・ライブラリ' : 'Technologies & Libraries'}
       </h4>
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap gap-1.5 sm:gap-2">
         ${techStackBadges}
       </div>
     </div>
 
     <!-- Action Links -->
     <div class="flex items-center justify-end gap-3 pt-4 border-t-2 border-slate-100">
-      <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn-nintendo-red px-6 py-3 text-xs font-extrabold flex items-center justify-center gap-2">
+      <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn-nintendo-red px-6 py-3 text-xs font-black flex items-center justify-center gap-2">
         <i data-lucide="github" class="w-4 h-4"></i>
         <span>${lang === 'ja' ? 'GitHub リポジトリをプレイ' : 'View on GitHub'}</span>
       </a>
@@ -896,7 +899,7 @@ window.closeModal = function() {
   document.body.style.overflow = 'auto';
 };
 
-// --- Projects Filtering (Switch Pill Toggle) ---
+// --- Projects Filtering ---
 function initFilter() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   filterBtns.forEach(btn => {
@@ -923,7 +926,7 @@ function initFilter() {
   });
 }
 
-// --- Clipboard Copy with Coin Sound & Nintendo Confetti ---
+// --- Clipboard Copy ---
 function initCopy() {
   const emailBtn = document.getElementById('copy-email-btn');
   if (!emailBtn) return;
@@ -950,7 +953,7 @@ function showToast(msg) {
   if (!toast) {
     toast = document.createElement('div');
     toast.id = 'global-toast';
-    toast.className = 'fixed bottom-6 right-4 sm:right-6 left-4 sm:left-auto z-50 px-5 py-3.5 rounded-full bg-[#E60012] text-white text-xs sm:text-sm font-extrabold shadow-2xl flex items-center justify-center sm:justify-start gap-2 transform translate-y-10 opacity-0 transition-all duration-300';
+    toast.className = 'fixed bottom-6 right-4 sm:right-6 left-4 sm:left-auto z-50 px-5 py-3.5 rounded-full bg-[#E60012] text-white text-xs sm:text-sm font-black shadow-2xl flex items-center justify-center sm:justify-start gap-2 transform translate-y-10 opacity-0 transition-all duration-300';
     document.body.appendChild(toast);
   }
 
