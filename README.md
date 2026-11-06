@@ -1,12 +1,16 @@
 # Suppaume — Nintendo-Style Playful Engineering Portfolio
 
-[![GitHub Profile](https://img.shields.io/badge/GitHub-Suppaume1103-E60012?style=flat&logo=github)](https://github.com/Suppaume1103)
-[![Aesthetic](https://img.shields.io/badge/Design-Nintendo%20Switch%20%2F%20Playful-E60012?style=flat)]()
+[![Live Demo](https://img.shields.io/badge/Demo-Live%20on%20GitHub%20Pages-E60012?style=for-the-badge&logo=github)](https://suppaume1103.github.io/portfolio/)
+[![GitHub Profile](https://img.shields.io/badge/GitHub-Suppaume1103-2C2C2C?style=flat&logo=github)](https://github.com/Suppaume1103)
+[![Design](https://img.shields.io/badge/Aesthetic-Nintendo%20Switch%20%2F%20Playful-E60012?style=flat)]()
 [![Stack](https://img.shields.io/badge/Stack-Java25%20%7C%20TS%20%7C%20React%20%7C%20Three.js-00C3E3?style=flat)]()
 [![Audio](https://img.shields.io/badge/Sound-Web%20Audio%20Switch%20SFX-FFB300?style=flat)]()
 [![Zero Build](https://img.shields.io/badge/Zero--Build-100%25%20CDN%20Powered-00D26A?style=flat)]()
 
-**任天堂（Nintendo Switch / Nintendo Direct）の世界観とあそび心を詰め込んだ、ワクワクするエンジニア・ポートフォリオです！**
+**🌐 公開URL:**  
+👉 **[https://suppaume1103.github.io/portfolio/](https://suppaume1103.github.io/portfolio/)**
+
+任天堂（Nintendo Switch / Nintendo Direct）の世界観とあそび心を詰め込んだ、ワクワクするエンジニア・ポートフォリオです！
 100% CDN駆動（Zero-Build）で動作し、スマートフォン・タブレット・PC全画面に対応しています。
 
 ---
@@ -20,10 +24,10 @@
    - **Switchソフト風パッケージカード**: Joy-Conカラーストライプやポップなバッジが付いたゲームソフトセレクター風カード。
 
 2. **Web Audio API による Nintendo Switch サウンド演出**
-   - 外部音声ファイル不要！ブラウザの周波数シンセサイズにより完全スタンドアロンで再生。
-   - **Switchクリック音**: ボタンタップ時やリンク選択時の心地よい「カチッ！」というJoy-Con着脱/決定音。
-   - **コインゲット音**: メールアドレスコピー時の「チャリン♪」という2音ジングル。
-   - ナビ右上の **🔊 サウンドボタン** でいつでもワンタップでON/OFF切り替え可能。
+   - 外部音声ファイル不要！ブラウザの周波数シンセサイズで完全スタンドアロン再生。
+   - **Switchクリック音**: ボタンタップ時やリンク選択時に、Switch特有の「カチッ！」というJoy-Con着脱/決定音。
+   - **コインゲット音**: メールアドレスをコピーしたときに「チャリン♪」とコイン音が鳴り響き、任天堂カラーの紙吹雪が弾けます。
+   - ナビ右上の **🔊 サウンドボタン** でいつでも音のON/OFFが切り替え可能です。
 
 3. **Three.js によるポップな3Dトイ・ブロックワールド**
    - センターの回転する赤いクエスチョン風ブロックと、周りをぽよんと浮遊・自転するカラフルなJoy-Conカラースフィア＆キューブ。
@@ -70,26 +74,3 @@ handon_antigravity_portfolio/
 │       └── main.js         # Web Audio API音源、Three.jsトイワールド、多言語切替
 └── README.md               # プロジェクト解説ドキュメント
 ```
-
----
-
-## 💻 プレビュー・実行方法
-
-### 1. 最も手軽な方法
-`index.html` をお好みのWebブラウザ（Google Chrome, Edge, Safari など）にドラッグ＆ドロップまたはダブルクリックで開くだけで動作します。
-
-### 2. ローカルサーバーで確認する場合
-```powershell
-# Python を使用する場合
-python -m http.server 3000
-
-# Node.js (npx) を使用する場合
-npx serve .
-```
-ブラウザで `http://localhost:3000` にアクセスしてください。
-
-### 3. GitHub Pages への公開手順
-1. 本リポジトリを GitHub の任意のリポジトリ（例: `portfolio` または `<username>.github.io`）にプッシュします。
-2. GitHub のリポジトリ設定（Settings）→「Pages」へ進みます。
-3. **Branch** を `main`、**Folder** を `/ (root)` に設定して「Save」をクリックします。
-4. 数十秒で公開URLが発行され、世界中からアクセス可能になります。
