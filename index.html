@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Suppaume — Playful Engineering & Creations</title>
+  <meta name="description" content="Portfolio of Suppaume (@Suppaume1103) - Playful software engineering in Intelligent NLP, Real-time WebSockets, and 3D WebGL Physics.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%22%20%22100%22%20%22100%22><text y=%22.9em%22 font-size=%2290%22>🍄</text></svg>">
+
+  <!-- Google Fonts: M PLUS Rounded 1c, Nunito, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=Nunito:wght@600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nintendo: {
+              red: '#E60012',
+              darkRed: '#b8000e',
+              blue: '#00C3E3',
+              green: '#00D26A',
+              yellow: '#FFB300',
+              purple: '#8C44FF',
+              dark: '#2C2C2C'
+            }
+          },
+          fontFamily: {
+            sans: ['"M PLUS Rounded 1c"', '"Nunito"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Canvas Confetti (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- Custom Stylesheet (Nintendo Aesthetic) -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body class="bg-[#F6F7FB] text-[#2C2C2C] min-h-screen relative selection:bg-[#E60012] selection:text-white bg-nintendo-dots">
+
+  <!-- Global Sticky Navigation Bar (Nintendo Red Stripe) -->
+  <header class="fixed top-0 left-0 right-0 z-40 nintendo-nav transition-all duration-300 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <!-- Nintendo Capsule Logo -->
+      <a href="#" class="flex items-center gap-2 group">
+        <div class="nintendo-badge text-base tracking-normal group-hover:scale-105 transition-transform">
+          Suppaume
+        </div>
+        <span class="text-xs font-black text-slate-400 group-hover:text-[#E60012] transition-colors font-mono">
+          .dev
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-extrabold text-slate-700">
+        <a href="#projects" class="hover:text-[#E60012] transition-colors py-1 relative hover:after:w-full after:w-0 after:h-[3px] after:bg-[#E60012] after:rounded-full after:absolute after:bottom-0 after:left-0 after:transition-all after:duration-200" data-i18n="navProjects">つくったもの</a>
+        <a href="#tech-stack" class="hover:text-[#E60012] transition-colors py-1 relative hover:after:w-full after:w-0 after:h-[3px] after:bg-[#E60012] after:rounded-full after:absolute after:bottom-0 after:left-0 after:transition-all after:duration-200" data-i18n="navTech">そうび・とくぎ</a>
+        <a href="#about" class="hover:text-[#E60012] transition-colors py-1 relative hover:after:w-full after:w-0 after:h-[3px] after:bg-[#E60012] after:rounded-full after:absolute after:bottom-0 after:left-0 after:transition-all after:duration-200" data-i18n="navAbout">プレイヤー情報</a>
+        <a href="#contact" class="hover:text-[#E60012] transition-colors py-1 relative hover:after:w-full after:w-0 after:h-[3px] after:bg-[#E60012] after:rounded-full after:absolute after:bottom-0 after:left-0 after:transition-all after:duration-200" data-i18n="navContact">コンタクト</a>
+      </nav>
+
+      <!-- Right Action Items -->
+      <div class="flex items-center gap-2 sm:gap-2.5">
+        <!-- Live Status Pill (Desktop) -->
+        <div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/90 border border-emerald-300 text-emerald-800 text-xs font-black shadow-sm">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+          </span>
+          <span data-i18n="statusAvailable">オンライン</span>
+        </div>
+
+        <!-- Nintendo Switch UI Sound Toggle -->
+        <button id="sound-toggle-btn" class="touch-target px-2.5 py-1.5 rounded-full bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-700 transition-all flex items-center justify-center shadow-sm" title="Sound Effects: ON">
+          <i data-lucide="volume-2" class="w-4 h-4 text-[#E60012]"></i>
+        </button>
+
+        <!-- Language Switcher Toggle -->
+        <button id="lang-toggle-btn" class="touch-target px-3 py-1.5 rounded-full bg-white hover:bg-slate-50 border-2 border-slate-200 text-xs font-black text-slate-800 transition-all flex items-center justify-center gap-1.5 shadow-sm" title="Switch Language">
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-[#00C3E3]"></i>
+          <span class="lang-label">EN</span>
+        </button>
+
+        <!-- GitHub Icon Link -->
+        <a href="https://github.com/Suppaume1103" target="_blank" rel="noopener noreferrer" class="touch-target p-2 rounded-full bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-800 transition-all flex items-center justify-center shadow-sm" title="GitHub Profile">
+          <i data-lucide="github" class="w-4 h-4"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle Button (Hamburger) -->
+        <button id="mobile-menu-btn" class="md:hidden touch-target p-2 rounded-full bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-800 transition-all flex items-center justify-center shadow-sm" aria-label="Toggle navigation menu">
+          <i data-lucide="menu" id="menu-icon-open" class="w-5 h-5"></i>
+          <i data-lucide="x" id="menu-icon-close" class="w-5 h-5 hidden"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer / Dropdown Panel -->
+    <div id="mobile-menu" class="md:hidden px-6 py-5">
+      <div class="flex flex-col gap-4">
+        <!-- Live Status Pill (Mobile) -->
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs font-black self-start shadow-sm">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+          </span>
+          <span data-i18n="statusAvailable">オンライン</span>
+        </div>
+
+        <nav class="flex flex-col gap-2 text-base font-extrabold text-slate-800">
+          <a href="#projects" class="mobile-nav-link py-3 px-4 rounded-2xl hover:bg-slate-100 hover:text-[#E60012] transition-colors flex items-center justify-between" data-i18n="navProjects">
+            <span>つくったもの</span>
+            <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+          </a>
+          <a href="#tech-stack" class="mobile-nav-link py-3 px-4 rounded-2xl hover:bg-slate-100 hover:text-[#E60012] transition-colors flex items-center justify-between" data-i18n="navTech">
+            <span>そうび・とくぎ</span>
+            <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+          </a>
+          <a href="#about" class="mobile-nav-link py-3 px-4 rounded-2xl hover:bg-slate-100 hover:text-[#E60012] transition-colors flex items-center justify-between" data-i18n="navAbout">
+            <span>プレイヤー情報</span>
+            <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+          </a>
+          <a href="#contact" class="mobile-nav-link py-3 px-4 rounded-2xl hover:bg-slate-100 hover:text-[#E60012] transition-colors flex items-center justify-between" data-i18n="navContact">
+            <span>コンタクト</span>
+            <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-16">
+
+    <!-- =====================================================================
+         Hero Section (Nintendo Playful 3D World & Direct Style)
+         ===================================================================== -->
+    <section class="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 py-14 sm:py-20">
+      <!-- 3D Canvas Background Container -->
+      <div id="hero-canvas-container" class="absolute inset-0"></div>
+
+      <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
+        <!-- Eyebrow Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border-2 border-slate-200 mb-6 sm:mb-8 shadow-sm">
+          <i data-lucide="sparkles" class="w-4 h-4 text-[#FFB300] shrink-0 fill-current"></i>
+          <span class="text-xs font-black tracking-wider text-slate-800 uppercase" data-i18n="heroTag">PLAYFUL × INTELLIGENCE × ENGINEERING</span>
+        </div>
+
+        <!-- Hero Headline -->
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-slate-900 mb-5 sm:mb-6 leading-[1.2] sm:leading-[1.15]">
+          <span data-i18n="heroTitlePrefix">あそび心を、</span><br>
+          <span class="text-[#E60012] inline-block animate-nintendo-float" data-i18n="heroTitleHighlight">テクノロジーでカタチに。</span>
+        </h1>
+
+        <!-- Hero Subtitle -->
+        <p class="text-sm sm:text-base md:text-xl text-slate-600 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-bold px-2" data-i18n="heroDesc">
+          知能情報処理（NLP・TF-IDF・LLM）・リアルタイムWebSocket・WebGL/3D物理演算まで。動かして楽しい、触って心地よいシステムを創るエンジニアリング。
+        </p>
+
+        <!-- CTA Action Buttons (Nintendo 3D Push Style) -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 sm:mb-16 w-full sm:w-auto px-4 sm:px-0">
+          <a href="#projects" class="w-full sm:w-auto btn-nintendo-red px-8 py-4 text-sm sm:text-base flex items-center justify-center gap-2.5">
+            <span data-i18n="btnExplore">つくったものをあそぶ</span>
+            <i data-lucide="gamepad-2" class="w-5 h-5"></i>
+          </a>
+          <a href="https://github.com/Suppaume1103" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto btn-nintendo-white px-8 py-4 text-sm sm:text-base flex items-center justify-center gap-2.5">
+            <i data-lucide="github" class="w-5 h-5"></i>
+            <span data-i18n="btnGithub">GitHub をのぞく</span>
+          </a>
+        </div>
+
+        <!-- Quick Stat Highlights (Nintendo Stats Strip) -->
+        <div class="grid grid-cols-3 gap-3 sm:gap-8 pt-6 sm:pt-8 border-t-2 border-slate-200/80 max-w-2xl w-full">
+          <div class="bg-white/80 p-3 sm:p-4 rounded-3xl border-2 border-slate-200/80 shadow-sm">
+            <div id="stat-public-repos" class="text-2xl sm:text-4xl font-black font-mono text-[#E60012] mb-0.5 sm:mb-1">3</div>
+            <div class="text-[11px] sm:text-xs text-slate-600 font-extrabold" data-i18n="statsRepos">公開タイトル</div>
+          </div>
+          <div class="bg-white/80 p-3 sm:p-4 rounded-3xl border-2 border-slate-200/80 shadow-sm">
+            <div class="text-2xl sm:text-4xl font-black font-mono text-[#00C3E3] mb-0.5 sm:mb-1">15+</div>
+            <div class="text-[11px] sm:text-xs text-slate-600 font-extrabold" data-i18n="statsTechs">習得スキル</div>
+          </div>
+          <div class="bg-white/80 p-3 sm:p-4 rounded-3xl border-2 border-slate-200/80 shadow-sm">
+            <div class="text-2xl sm:text-4xl font-black font-mono text-[#00D26A] mb-0.5 sm:mb-1">CPS Lab</div>
+            <div class="text-[11px] sm:text-xs text-slate-600 font-extrabold" data-i18n="statsCommits">研究室 拠点</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         Featured Works Section (つくったもの / Projects)
+         ===================================================================== -->
+    <section id="projects" class="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto relative">
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-6">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-[#E60012] text-xs font-black tracking-wider uppercase mb-2">
+            <i data-lucide="gamepad" class="w-4 h-4"></i>
+            <span data-i18n="sectionWorksTag">FEATURED SOFTWARES</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight" data-i18n="sectionWorksTitle">
+            あそびと技術の実験室
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base mt-2 max-w-2xl font-bold" data-i18n="sectionWorksDesc">
+            GitHubに公開中の主要タイトル。アーキテクチャからUI・物理演算・NLPモデルまで、ワクワクする体験を目指して実装しています。
+          </p>
+        </div>
+
+        <!-- Switch Style Filter Tabs -->
+        <div class="flex gap-2 p-1.5 rounded-full bg-white border-2 border-slate-200 overflow-x-auto no-scrollbar w-full sm:w-auto shadow-sm">
+          <button class="filter-btn shrink-0 touch-target px-4 py-2 rounded-full text-xs font-black transition-all bg-[#E60012] text-white whitespace-nowrap shadow-md" data-filter="all" data-i18n="filterAll">ぜんぶ</button>
+          <button class="filter-btn shrink-0 touch-target px-4 py-2 rounded-full text-xs font-black transition-all bg-white text-slate-700 hover:text-[#E60012] whitespace-nowrap" data-filter="fullstack" data-i18n="filterFullStack">マルチプレイ & Web</button>
+          <button class="filter-btn shrink-0 touch-target px-4 py-2 rounded-full text-xs font-black transition-all bg-white text-slate-700 hover:text-[#E60012] whitespace-nowrap" data-filter="3d" data-i18n="filter3D">3D & 物理演算</button>
+          <button class="filter-btn shrink-0 touch-target px-4 py-2 rounded-full text-xs font-black transition-all bg-white text-slate-700 hover:text-[#E60012] whitespace-nowrap" data-filter="ai" data-i18n="filterAI">知能処理 & NLP</button>
+        </div>
+      </div>
+
+      <!-- Project Cards Grid (Dynamic JS rendering) -->
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered by main.js -->
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         Tech Stack Section (そうび & とくぎ)
+         ===================================================================== -->
+    <section id="tech-stack" class="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto border-t-2 border-slate-200/80 relative">
+      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+        <div class="inline-flex items-center gap-1.5 text-[#00C3E3] text-xs font-black tracking-wider uppercase mb-2">
+          <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
+          <span data-i18n="sectionTechTag">ABILITIES & SKILLS</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight" data-i18n="sectionTechTitle">
+          そうび & 得意わざ
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-2 px-2 font-bold" data-i18n="sectionTechDesc">
+          アルゴリズムの実装からフロントエンド・インフラまで、目的に応じて最適な技術を選定・統合します。
+        </p>
+      </div>
+
+      <!-- Tech Stack Categories Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- 1. Languages -->
+        <div class="nintendo-card p-6 relative overflow-hidden group">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-red-100 text-[#E60012] flex items-center justify-center shrink-0 shadow-sm">
+              <i data-lucide="code-2" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-base font-black text-slate-900" data-i18n="techCatLanguages">言語スキル (Languages)</h3>
+              <p class="text-xs text-slate-500 font-bold">静的型付けと高生産性のハイブリッド</p>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#00C3E3] shrink-0"></span>
+                <span class="text-sm font-extrabold text-slate-800">TypeScript / JS</span>
+              </div>
+              <span class="text-xs font-mono font-bold text-[#00C3E3]">Web & 3D</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#E60012] shrink-0"></span>
+                <span class="text-sm font-extrabold text-slate-800">Java (Java 25)</span>
+              </div>
+              <span class="text-xs font-mono font-bold text-[#E60012]">NLP & Search</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#FFB300] shrink-0"></span>
+                <span class="text-sm font-extrabold text-slate-800">Python</span>
+              </div>
+              <span class="text-xs font-mono font-bold text-[#FFB300]">Data & ML</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#8C44FF] shrink-0"></span>
+                <span class="text-sm font-extrabold text-slate-800">SQL / PostgreSQL</span>
+              </div>
+              <span class="text-xs font-mono font-bold text-[#8C44FF]">Schema & Relational</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. AI / NLP & Search -->
+        <div class="nintendo-card p-6 relative overflow-hidden group">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-purple-100 text-[#8C44FF] flex items-center justify-center shrink-0 shadow-sm">
+              <i data-lucide="bot" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-base font-black text-slate-900" data-i18n="techCatAI">知能情報処理 & NLP</h3>
+              <p class="text-xs text-slate-500 font-bold">情報検索・感情分析・LLM統合</p>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Apache Lucene 9</span>
+              <span class="text-xs font-mono font-bold text-[#8C44FF]">TF-IDF Vector</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Kuromoji & English</span>
+              <span class="text-xs font-mono font-bold text-[#8C44FF]">Morphological</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Apache OpenNLP</span>
+              <span class="text-xs font-mono font-bold text-[#8C44FF]">Sentence Detector</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">OpenAI API (Java SDK)</span>
+              <span class="text-xs font-mono font-bold text-[#8C44FF]">Affective Reranking</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Frontend & UI/UX -->
+        <div class="nintendo-card p-6 relative overflow-hidden group">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-blue-100 text-[#00C3E3] flex items-center justify-center shrink-0 shadow-sm">
+              <i data-lucide="layout" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-base font-black text-slate-900" data-i18n="techCatFrontend">フロントエンド & UI</h3>
+              <p class="text-xs text-slate-500 font-bold">手触りと操作性の高いリッチUI</p>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">React & TypeScript</span>
+              <span class="text-xs font-mono font-bold text-[#00C3E3]">Component Engine</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">HTML5 Canvas API</span>
+              <span class="text-xs font-mono font-bold text-[#00C3E3]">Pixel Studio 16x16</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Tailwind CSS (CDN)</span>
+              <span class="text-xs font-mono font-bold text-[#00C3E3]">Playful Styling</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Vite Build Tool</span>
+              <span class="text-xs font-mono font-bold text-[#00C3E3]">Modern ESM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Backend & Real-time -->
+        <div class="nintendo-card p-6 relative overflow-hidden group">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-green-100 text-[#00D26A] flex items-center justify-center shrink-0 shadow-sm">
+              <i data-lucide="server" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-base font-black text-slate-900" data-i18n="techCatBackend">バックエンド & 通信</h3>
+              <p class="text-xs text-slate-500 font-bold">非同期通信とマルチプレイ同期</p>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Node.js & Express</span>
+              <span class="text-xs font-mono font-bold text-[#00D26A]">REST API</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Socket.IO (WebSocket)</span>
+              <span class="text-xs font-mono font-bold text-[#00D26A]">Real-time Sync</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Cron Batch Lifecycle</span>
+              <span class="text-xs font-mono font-bold text-[#00D26A]">Growth & Expiry</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">OkHttp3 & Gson</span>
+              <span class="text-xs font-mono font-bold text-[#00D26A]">HTTP/2 Pipelines</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. 3D & Physics -->
+        <div class="nintendo-card p-6 relative overflow-hidden group">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-yellow-100 text-[#FFB300] flex items-center justify-center shrink-0 shadow-sm">
+              <i data-lucide="orbit" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-base font-black text-slate-900" data-i18n="techCat3D">3D & 物理シミュレーション</h3>
+              <p class="text-xs text-slate-500 font-bold">数学と剛体物理によるリアルな動き</p>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Three.js / WebGL</span>
+              <span class="text-xs font-mono font-bold text-[#FFB300]">Mesh & Shaders</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Cannon-es</span>
+              <span class="text-xs font-mono font-bold text-[#FFB300]">Rigid Body Physics</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Simplex Noise</span>
+              <span class="text-xs font-mono font-bold text-[#FFB300]">Liquid Surface Wave</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">lil-gui & Tween.js</span>
+              <span class="text-xs font-mono font-bold text-[#FFB300]">Runtime Tuning</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Cloud & Tools -->
+        <div class="nintendo-card p-6 relative overflow-hidden group">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-rose-100 text-[#E60012] flex items-center justify-center shrink-0 shadow-sm">
+              <i data-lucide="cloud" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-base font-black text-slate-900" data-i18n="techCatInfra">データベース & ツール</h3>
+              <p class="text-xs text-slate-500 font-bold">安定した運用環境と開発基盤</p>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">PostgreSQL</span>
+              <span class="text-xs font-mono font-bold text-[#E60012]">Relational Database</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Render Cloud Hosting</span>
+              <span class="text-xs font-mono font-bold text-[#E60012]">Managed Service</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Git & GitHub</span>
+              <span class="text-xs font-mono font-bold text-[#E60012]">Version Control</span>
+            </div>
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-sm font-extrabold text-slate-800">Maven Build System</span>
+              <span class="text-xs font-mono font-bold text-[#E60012]">Dependency Mgmt</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         About / Engineering Philosophy Section (プレイヤー情報)
+         ===================================================================== -->
+    <section id="about" class="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto border-t-2 border-slate-200/80 relative">
+      <div class="max-w-3xl mb-8 sm:mb-12">
+        <div class="inline-flex items-center gap-1.5 text-[#E60012] text-xs font-black tracking-wider uppercase mb-2">
+          <i data-lucide="user-check" class="w-4 h-4"></i>
+          <span data-i18n="sectionAboutTag">PLAYER PROFILE</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight" data-i18n="sectionAboutTitle">
+          CPS Lab × モノづくり精神
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed font-bold" data-i18n="sectionAboutDesc">
+          サイバーフィジカルシステム（CPS）や知能処理を背景に持ち、理論の理解とモダンWebへの実装を両立。「枯れた技術の水平思考」と「触って気持ちいいUI設計」を大切にしています。
+        </p>
+      </div>
+
+      <!-- About Points Grid (Rendered by main.js) -->
+      <div id="about-points-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Rendered by main.js -->
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         Contact Section (コンタクト)
+         ===================================================================== -->
+    <section id="contact" class="py-16 sm:py-24 px-4 sm:px-6 max-w-5xl mx-auto border-t-2 border-slate-200/80 relative text-center">
+      <div class="nintendo-card p-8 sm:p-16 relative overflow-hidden bg-white">
+        <!-- Joy-con decorative borders -->
+        <div class="absolute left-0 top-0 bottom-0 w-3 bg-[#00C3E3]"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-3 bg-[#E60012]"></div>
+
+        <div class="relative z-10 max-w-xl mx-auto">
+          <div class="w-16 h-16 rounded-full bg-red-100 text-[#E60012] flex items-center justify-center mx-auto mb-6 shadow-md">
+            <i data-lucide="mail" class="w-8 h-8"></i>
+          </div>
+
+          <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mb-4" data-i18n="contactTitle">
+            いっしょに新しいあそびを創りませんか？
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-8 font-bold" data-i18n="contactDesc">
+            共同開発、技術交流、プロジェクトに関するご相談はお気軽にご連絡ください！
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+            <button id="copy-email-btn" class="w-full sm:w-auto btn-nintendo-red px-8 py-4 text-sm sm:text-base flex items-center justify-center gap-2.5">
+              <i data-lucide="copy" class="w-5 h-5"></i>
+              <span data-i18n="contactEmailBtn">メールアドレスをコピー</span>
+            </button>
+
+            <a href="https://github.com/Suppaume1103" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto btn-nintendo-white px-8 py-4 text-sm sm:text-base flex items-center justify-center gap-2.5">
+              <i data-lucide="github" class="w-5 h-5"></i>
+              <span>GitHub @Suppaume1103</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="border-t-2 border-slate-200 py-10 px-4 sm:px-6 bg-white">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-black text-slate-500 text-center sm:text-left">
+      <div class="flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-[#E60012] shrink-0"></span>
+        <span>Suppaume — Nintendo Spirit Portfolio &copy; 2026</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/Suppaume1103" target="_blank" rel="noopener noreferrer" class="hover:text-[#E60012] transition-colors">GitHub</a>
+        <a href="#projects" class="hover:text-[#E60012] transition-colors">Works</a>
+        <a href="#tech-stack" class="hover:text-[#E60012] transition-colors">Skills</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       Interactive Project Detail Modal (Nintendo Switch Dialog)
+       ===================================================================== -->
+  <div id="project-modal" class="modal-overlay fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6">
+    <div class="modal-content bg-white max-w-3xl w-full max-h-[92vh] overflow-y-auto p-6 sm:p-8 relative">
+      <!-- Close Button -->
+      <button id="modal-close-btn" class="touch-target absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors flex items-center justify-center z-10 border-2 border-slate-200" title="Close">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Dynamic Content Injected by main.js -->
+      <div id="modal-dynamic-content">
+        <!-- Content will be inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom JavaScript Logic -->
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>
